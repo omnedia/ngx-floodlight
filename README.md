@@ -66,7 +66,9 @@ Use it in your template:
   [animate]="boolean"
   [animateOnlyOnce]="boolean"
   [styleClass]="customClass"
-></om-floodlight>
+>
+  <ng-content></ng-content>
+</om-floodlight>
 ```
 
 * `gradientFirst` – (string, default: primary radial gradient)
