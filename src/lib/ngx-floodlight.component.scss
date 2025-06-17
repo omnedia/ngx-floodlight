@@ -1,0 +1,133 @@
+.om-floodlight {
+  --floodlight-gradient-first: radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(210, 100%, 85%, .15) 0, hsla(210, 100%, 55%, .05) 50%, hsla(210, 100%, 45%, 0) 80%);
+  --floodlight-gradient-second: radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 85%, .1) 0, hsla(210, 100%, 55%, .02) 80%, transparent 100%);
+  --floodlight-gradient-third: radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 85%, .1) 0, hsla(210, 100%, 45%, .02) 80%, transparent 100%);
+  --floodlight-translate-y: -10%;
+  --floodlight-width: clamp(50px, 50%, 350px);
+  --floodlight-height: 150%;
+  --floodlight-small-width: calc(var(--floodlight-width) / 2);
+  --floodlight-left-x: 0;
+  --floodlight-right-x: 0;
+  --floodlight-rotation: 45deg;
+  --animation-duration: 1s;
+
+  position: relative;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.om-floodlight-left,
+.om-floodlight-right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.om-floodlight-left {
+  left: 0;
+  transform: translate(-72%, -62%) scale(0.5);
+  opacity: 0;
+
+  &.not-animated {
+    transform: translate(-5%, -5%);
+    animation: unset;
+    opacity: 1;
+  }
+
+  &.play-animation {
+    animation: om-floodlight-left 2s ease 0.75s 1 forwards;
+  }
+}
+
+.om-floodlight-right {
+  right: 0;
+  transform: translate(72%, -62%) scale(0.5);
+  opacity: 0;
+
+  &.not-animated {
+    transform: translate(-5%, -5%);
+    animation: unset;
+    opacity: 1;
+  }
+
+  &.play-animation {
+    animation: om-floodlight-right 2s ease 0.75s 1 forwards;
+  }
+}
+
+.floodlight-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--floodlight-height);
+  pointer-events: none;
+
+  &.main {
+    background: var(--floodlight-gradient-first);
+    width: var(--floodlight-width);
+    transform: translateY(var(--floodlight-translate-y)) rotate(calc(-1 * var(--floodlight-rotation))) translateX(var(--floodlight-left-x, 0));
+    left: 0;
+  }
+
+  &.small1 {
+    background: var(--floodlight-gradient-second);
+    width: var(--floodlight-small-width);
+    transform: rotate(calc(-1 * var(--floodlight-rotation))) translate(145%, -40%) translateX(var(--floodlight-left-x, 0));
+    left: 0;
+  }
+
+  &.small2 {
+    background: var(--floodlight-gradient-third);
+    width: var(--floodlight-small-width);
+    transform: rotate(calc(-1 * var(--floodlight-rotation))) translate(60%, -40%) translateX(var(--floodlight-left-x, 0));
+    left: 0;
+  }
+}
+
+.om-floodlight-right .floodlight-beam.main {
+  left: auto;
+  right: 0;
+  background: var(--floodlight-gradient-first);
+  transform: translateY(var(--floodlight-translate-y)) rotate(var(--floodlight-rotation)) translateX(var(--floodlight-right-x, 0));
+}
+
+.om-floodlight-right .floodlight-beam.small1 {
+  left: auto;
+  right: 0;
+  background: var(--floodlight-gradient-second);
+  transform: rotate(var(--floodlight-rotation)) translate(-100%, -40%) translateX(var(--floodlight-right-x, 0));
+}
+
+.om-floodlight-right .floodlight-beam.small2 {
+  left: auto;
+  right: 0;
+  background: var(--floodlight-gradient-third);
+  transform: rotate(var(--floodlight-rotation)) translate(-25%, -20%) translateX(var(--floodlight-right-x, 0));
+}
+
+@keyframes om-floodlight-left {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(5%, -5%) scale(1);
+  }
+}
+
+@keyframes om-floodlight-right {
+  0% {
+    opacity: 0;
+    transform: translate(72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-5%, -5%) scale(1);
+  }
+}

@@ -1,0 +1,13 @@
+<div class="om-floodlight" [ngStyle]="style()" #OmFloodlight>
+  <ng-content></ng-content>
+  <div class="om-floodlight-left" [class.not-animated]="!animate" [class.play-animation]="animate && inViewport() || animate && animateOnlyOnce && playedAnimationOnce">
+    <div class="floodlight-beam main"></div>
+    <div class="floodlight-beam small1"></div>
+    <div class="floodlight-beam small2"></div>
+  </div>
+  <div class="om-floodlight-right" [class.not-animated]="!animate" [class.play-animation]="animate && inViewport() || animate && animateOnlyOnce && playedAnimationOnce">
+    <div class="floodlight-beam main"></div>
+    <div class="floodlight-beam small1"></div>
+    <div class="floodlight-beam small2"></div>
+  </div>
+</div>

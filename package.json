@@ -1,0 +1,26 @@
+{
+  "name": "@omnedia/ngx-floodlight",
+  "description": "An Angular standalone component rendering dynamic animated floodlight gradients.",
+  "version": "1.0.0",
+  "peerDependencies": {
+    "@angular/common": "^18.0.0",
+    "@angular/core": "^18.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "npm",
+    "background",
+    "spotlight",
+    "floodlight",
+    "light",
+    "animation"
+  ],
+  "repository": {
+    "url": "https://github.com/omnedia/ngx-floodlight"
+  },
+  "author": "Markus Block (markus.block@omnedia.com)",
+  "license": "MIT"
+}
